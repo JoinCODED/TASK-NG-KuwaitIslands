@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
-import islands from '../../data/islands';
+import islands, { Island } from '../../data/islands';
 import { HeaderComponent } from '../header/header.component';
 import { IslandFormComponent } from '../island-form/island-form.component';
 import { IslandListComponent } from '../island-list/island-list.component';
+
 
 @Component({
   selector: 'app-layout',
@@ -15,6 +16,7 @@ import { IslandListComponent } from '../island-list/island-list.component';
 export class LayoutComponent {
   islands = islands;
   filteredIslands = islands;
+  currentIsland = this.islands[0];
 
   filterIslands(search: string) {
     console.log(search);
@@ -26,5 +28,9 @@ export class LayoutComponent {
     this.filteredIslands = this.islands.filter((island) =>
       island.name.toLowerCase().includes(search.toLowerCase())
     );
+  }
+
+  onIslandSelected(island: Island) {
+    this.currentIsland = island;
   }
 }
