@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Island } from '../../data/islands';
 
@@ -11,4 +11,11 @@ import { Island } from '../../data/islands';
 })
 export class IslandFormComponent {
   @Input() island!: Island;
+  @Output() visitors = new EventEmitter();
+
+  onSubmit(e: Event) {
+    e.preventDefault();
+    this.island.visitors++;
+    this.visitors.emit(this.island.visitors);
+  }
 }
