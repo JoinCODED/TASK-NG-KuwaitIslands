@@ -14,6 +14,7 @@ export class IslandFormComponent {
   @Input() island!: Island;
 
   bookTrip(form: NgForm) {
-    console.log(form.value);
+    console.log('Booking trip to:', this.island.name);
+    console.log('User info:', form.value);
   }
 }

@@ -15,6 +15,7 @@ import { IslandListComponent } from '../island-list/island-list.component';
 export class LayoutComponent {
   islands = islands;
   filteredIslands = islands;
+  currentIsland = this.islands[0];
 
   filterIslands(search: string) {
     if (!search) {
@@ -25,5 +26,9 @@ export class LayoutComponent {
     this.filteredIslands = this.islands.filter((island) =>
       island.name.toLowerCase().includes(search.toLowerCase())
     );
+  }
+
+  setCurrentIsland(island: any) {
+    this.currentIsland = island;
   }
 }
