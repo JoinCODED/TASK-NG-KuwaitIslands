@@ -19,7 +19,6 @@ export class LayoutComponent {
   currentIsland: Island = this.islands[0];
 
   filterIslands(search: string) {
-    console.log(search);
     if (!search) {
       this.filteredIslands = this.islands;
       return;
