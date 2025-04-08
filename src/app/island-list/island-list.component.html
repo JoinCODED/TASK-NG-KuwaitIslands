@@ -1,5 +1,6 @@
 <div class="island-list">
   @for (island of islands; track island.id) {
-  <app-island-card [island]="island"></app-island-card>
+  <app-island-card [island]="island" (islandSelected)="onIslandClick($event)"></app-island-card>
+  
   }
 </div>
