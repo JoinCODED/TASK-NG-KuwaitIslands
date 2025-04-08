@@ -15,7 +15,7 @@ import { IslandListComponent } from '../island-list/island-list.component';
 export class LayoutComponent {
   islands = islands;
   filteredIslands = islands;
-  currentIsland = islands[0];
+  currentIsland: any = islands[0];
 
   selectIsland(island: Island) {
     this.currentIsland = island;
