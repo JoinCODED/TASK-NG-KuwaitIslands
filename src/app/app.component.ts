@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 import { LayoutComponent } from './layout/layout.component';
-
+import { Island } from '../data/islands';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -10,4 +10,7 @@ import { LayoutComponent } from './layout/layout.component';
 })
 export class AppComponent {
   title = 'TASK-NG-KuwaitIslands';
+  @Output() currentIsland = new EventEmitter<Island>()
+
+  
 }

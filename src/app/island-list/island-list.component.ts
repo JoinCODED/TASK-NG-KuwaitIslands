@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Island } from '../../data/islands';
 import { IslandCardComponent } from '../island-card/island-card.component';
@@ -12,4 +12,9 @@ import { IslandCardComponent } from '../island-card/island-card.component';
 })
 export class IslandListComponent {
   @Input() islands!: Island[];
+  @Output() setIsland = new EventEmitter<Island>();
+
+  selectCard(island: Island){
+    this.setIsland.emit(island);
+  }
 }
