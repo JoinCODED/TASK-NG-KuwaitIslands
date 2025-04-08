@@ -9,8 +9,9 @@
     />
     <app-island-list
       [islands]="filteredIslands"
-      (selected)="selectIsland($event)"
-    ></app-island-list>
+      (selectIsland)="onIslandSelected($event)"
+    >
+    </app-island-list>
   </div>
   <app-island-form [island]="currentIsland"></app-island-form>
 </div>
