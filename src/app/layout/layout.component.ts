@@ -22,7 +22,6 @@ export class LayoutComponent {
   }
 
   filterIslands(search: string) {
-    console.log(search);
     if (!search) {
       this.filteredIslands = this.islands;
       return;
