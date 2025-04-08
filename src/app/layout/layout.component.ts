@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Island } from '../../data/islands';
 
 import islands from '../../data/islands';
 import { HeaderComponent } from '../header/header.component';
@@ -13,8 +14,15 @@ import { IslandListComponent } from '../island-list/island-list.component';
   styleUrl: './layout.component.css',
 })
 export class LayoutComponent {
+  
   islands = islands;
   filteredIslands = islands;
+
+  currentIsland = islands[0];
+
+  setCurrentIsland(newIsland: Island){
+    this.currentIsland = newIsland;
+  }
 
   filterIslands(search: string) {
     console.log(search);

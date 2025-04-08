@@ -10,4 +10,6 @@
     <app-island-list [islands]="filteredIslands"></app-island-list>
   </div>
   <app-island-form [island]="islands[0]"></app-island-form>
+  <!-- <app-island-form [island]="currentIsland"></app-island-form> -->
+  <app-island-list (newIsland)="setCurrentIsland($event)"></app-island-list>
 </div>
