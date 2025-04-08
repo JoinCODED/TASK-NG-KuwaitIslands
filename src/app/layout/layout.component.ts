@@ -27,9 +27,9 @@ export class LayoutComponent {
     this.filteredIslands = this.islands.filter((island) =>
       island.name.toLowerCase().includes(search.toLowerCase())
     );
+    }
 
     changeIslandForm(newIsland: Island){
       this.selectedIsland = newIsland;
-    }
   }
 }
