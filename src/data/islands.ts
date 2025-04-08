@@ -55,7 +55,7 @@ const islands = [
   },
   {
     id: 8,
-    name: 'Qaruh',
+    name: 'Qaruhh',
     img: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/c9/f9/90/caption.jpg?w=1200&h=-1&s=1',
     visitors: [],
   },
