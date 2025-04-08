@@ -9,5 +9,9 @@
     />
     <app-island-list [islands]="filteredIslands"></app-island-list>
   </div>
-  <app-island-form [island]="islands[0]"></app-island-form>
+@for (island of islands; track $index) {
+  <app-island-form
+   [island]="island"></app-island-form>
+}
+
 </div>

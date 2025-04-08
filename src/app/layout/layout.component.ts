@@ -26,4 +26,7 @@ export class LayoutComponent {
       island.name.toLowerCase().includes(search.toLowerCase())
     );
   }
+
+
+  
 }
