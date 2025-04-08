@@ -11,5 +11,13 @@ import { Island } from '../../data/islands';
 })
 export class IslandCardComponent {
   @Input() island!: Island;
+<<<<<<< HEAD
 
+=======
+  @Output() selected = new EventEmitter<Island>();
+
+  selectIsland() {
+    this.selected.emit(this.island);
+  }
+>>>>>>> upstream/solution-output
 }

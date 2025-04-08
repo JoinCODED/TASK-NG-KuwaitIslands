@@ -2,9 +2,20 @@
   <h2>{{ island.name }}</h2>
   <img src="{{ island.img }}" alt="{{ island.name }}" />
   <h3>Book a trip to {{ island.name }} island</h3>
-  <form>
-    <input placeholder="Type Full Name" />
-    <input placeholder="Type Phone Number" />
-    <button type="submit" class="book">Book for today!</button>
+  <form [formGroup]="form" (ngSubmit)="bookTrip()">
+    <input placeholder="Type Full Name" formControlName="fullName"/>
+    @if(form.get('fullName')?.invalid && form.get('fullName')?.touched){
+      <p style="color: red;">Full name is required</p>
+    }
+    <input placeholder="Type Phone Number" type="number" formControlName="phoneNumber" />
+    @if(form.get('phoneNumber')?.invalid && form.get('phoneNumber')?.touched){
+      @if(form.get('phoneNumber')?.errors?.['pattern']){
+        <p style="color: red;">Phone number has to be 8 digits</p>
+      }
+      @if(form.get('phoneNumber')?.errors?.['required']){
+        <p style="color: red;">Phone number is required</p>
+      }
+    }
+    <button type="submit" [disabled]="form.invalid" class="book">Book for today!</button>
   </form>
 </div>
