@@ -2,9 +2,29 @@
   <h2>{{ island.name }}</h2>
   <img src="{{ island.img }}" alt="{{ island.name }}" />
   <h3>Book a trip to {{ island.name }} island</h3>
-  <form>
-    <input placeholder="Type Full Name" />
-    <input placeholder="Type Phone Number" />
-    <button type="submit" class="book">Book for today!</button>
+  <form #form="ngForm" (ngSubmit)="bookTrip(form)">
+    <input
+      name="fullName"
+      [(ngModel)]="fullName"
+      placeholder="Type Full Name"
+      required
+    />
+
+    <input
+      name="phoneNumber"
+      [(ngModel)]="phoneNumber"
+      placeholder="Type Phone Number"
+      required
+    />
+
+    <button *ngIf="!showConfirmation" type="submit" class="book">
+      Book for today!
+    </button>
+
+    <div *ngIf="showConfirmation">
+      <p>{{ confirmationMessage }}</p>
+      <button type="button" (click)="confirmBooking(form)">Confirm</button>
+      <button type="button" (click)="cancelBooking()">Cancel</button>
+    </div>
   </form>
 </div>
