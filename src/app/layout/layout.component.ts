@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
-import islands from '../../data/islands';
+import islands, { Island, Visitor } from '../../data/islands';
 import { HeaderComponent } from '../header/header.component';
 import { IslandFormComponent } from '../island-form/island-form.component';
 import { IslandListComponent } from '../island-list/island-list.component';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-layout',
@@ -15,11 +16,21 @@ import { IslandListComponent } from '../island-list/island-list.component';
 export class LayoutComponent {
   islands = islands;
   filteredIslands = islands;
+  curIsland:Island = islands[0]
+
+  cardWasClicked(island:Island){
+    this.curIsland = island;
+  }
+
+  formSubmitted(event: Visitor) {    
+    let visitor = new Visitor(event.name, event.phone);
+    this.curIsland.visitors.push(visitor);
+  }  
 
   filterIslands(search: string) {
     if (!search) {
       this.filteredIslands = this.islands;
-      return;
+      return;      
     }
 
     this.filteredIslands = this.islands.filter((island) =>

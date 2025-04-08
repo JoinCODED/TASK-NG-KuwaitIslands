@@ -1,19 +1,31 @@
-import { Component, Input } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 
-import { Island } from '../../data/islands';
+import { Island, Visitor } from '../../data/islands';
 
 @Component({
   selector: 'app-island-form',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './island-form.component.html',
   styleUrl: './island-form.component.css',
 })
 export class IslandFormComponent {
   @Input() island!: Island;
+  @Output() formSubmit = new EventEmitter<Visitor>();
+  form: FormGroup;
 
-  bookTrip(form: NgForm) {
-    console.log(form.value);
+  constructor(private fb:FormBuilder){
+    this.form = this.fb.group({
+      name: [''],
+      phone: ['']
+    })
   }
+
+  bookTrip(){
+    let visitor = new Visitor(this.form.value.name, this.form.value.phone)
+    console.log(this.form.value);
+    this.formSubmit.emit(visitor);
+  }
+
 }
