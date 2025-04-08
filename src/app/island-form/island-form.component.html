@@ -2,9 +2,30 @@
   <h2>{{ island.name }}</h2>
   <img src="{{ island.img }}" alt="{{ island.name }}" />
   <h3>Book a trip to {{ island.name }} island</h3>
-  <form>
-    <input placeholder="Type Full Name" />
-    <input placeholder="Type Phone Number" />
-    <button type="submit" class="book">Book for today!</button>
+  <form [formGroup]="form" (ngSubmit)="bookTrip()">
+    <input placeholder="Type Full Name" type="text" formControlName="name" required/>
+    <input placeholder="Type Phone Number" type="text" formControlName="phone" required/>
+    <button type="submit" class="book" [disabled]="form.invalid">Book for today!</button>
   </form>
 </div>
+
+@if (form.get('name')?.invalid && form.get('name')?.touched) {
+  @if(form.get('name')?.errors?.['required']) {
+    <p>Name is required.</p>
+  }
+  @if (form.get('name')?.errors?.['minlength']) {
+    <p>Minimum 2 characters.</p>
+  }
+}
+
+@if (form.get('phone')?.invalid && form.get('phone')?.touched) {
+  @if(form.get('phone')?.errors?.['required']) {
+    <p>Phone is required.</p>
+  }
+  @if (form.get('phone')?.errors?.['minlength']) {
+    <p>Minimum 8 numbers.</p>
+  }
+  @if (form.get('phone')?.errors?.['isValidPhone']) {
+    <p>Phone numbers only.</p>
+  }
+}
