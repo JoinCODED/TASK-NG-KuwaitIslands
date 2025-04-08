@@ -1,0 +1,11 @@
+@if (control?.invalid && control?.touched) { @if (control?.errors?.['required'])
+{
+<p>{{ fieldName }} is required</p>
+} @if (control?.errors?.['pattern']) {
+<p>{{ fieldName }} is invalid</p>
+} @if (control?.errors?.['minLength']) {
+<p>
+  {{ fieldName }} must be at least
+  {{ control?.errors?.['minLength'].requiredLength }} characters
+</p>
+} }

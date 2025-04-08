@@ -5,7 +5,6 @@ import { HeaderComponent } from '../header/header.component';
 import { IslandFormComponent } from '../island-form/island-form.component';
 import { IslandListComponent } from '../island-list/island-list.component';
 
-
 @Component({
   selector: 'app-layout',
   standalone: true,
@@ -16,7 +15,7 @@ import { IslandListComponent } from '../island-list/island-list.component';
 export class LayoutComponent {
   islands = islands;
   filteredIslands = islands;
-  currentIsland = this.islands[0];
+  currentIsland:Island = this.islands[0];
 
   filterIslands(search: string) {
     if (!search) {
