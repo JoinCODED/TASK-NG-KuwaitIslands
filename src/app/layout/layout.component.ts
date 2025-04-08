@@ -15,6 +15,11 @@ import { IslandListComponent } from '../island-list/island-list.component';
 export class LayoutComponent {
   islands = islands;
   filteredIslands = islands;
+  currnetIsland: any = null;
+
+  SelectCurrentIsland(island: any) {
+    this.currnetIsland = island;
+  }
 
   filterIslands(search: string) {
     if (!search) {
