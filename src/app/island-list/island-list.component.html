@@ -1,12 +1,8 @@
 <div class="island-list">
   @for (island of islands; track island.id) {
-<<<<<<< HEAD
-  <app-island-card [island]="island" (click)="selectCard(island)"></app-island-card>
-=======
   <app-island-card
     [island]="island"
     (selected)="selectIsland($event)"
   ></app-island-card>
->>>>>>> upstream/solution-output
   }
 </div>
