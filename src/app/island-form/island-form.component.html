@@ -2,9 +2,9 @@
   <h2>{{ island.name }}</h2>
   <img src="{{ island.img }}" alt="{{ island.name }}" />
   <h3>Book a trip to {{ island.name }} island</h3>
-  <form>
-    <input placeholder="Type Full Name" />
-    <input placeholder="Type Phone Number" />
+  <form [formGroup]="form" (ngSubmit)="bookTrip(form)">
+    <input type="text" formControlName="name" id="name" name="name" placeholder="Type Full Name" />
+    <input type="text" formControlName="number" name="number" placeholder="Type Phone Number" />
     <button type="submit" class="book">Book for today!</button>
   </form>
 </div>
