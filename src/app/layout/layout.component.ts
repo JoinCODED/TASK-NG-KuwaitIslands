@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
-import islands, { Island } from '../../data/islands';
+import islands, { Island, Visitor } from '../../data/islands';
 import { HeaderComponent } from '../header/header.component';
 import { IslandFormComponent } from '../island-form/island-form.component';
 import { IslandListComponent } from '../island-list/island-list.component';
@@ -22,10 +22,9 @@ export class LayoutComponent {
     this.curIsland = island;
   }
 
-  formSubmitted(event: NgForm) {
-    console.log('form')
-    console.log(event.value);
-    this.curIsland.visitors++;
+  formSubmitted(event: Visitor) {    
+    let visitor = new Visitor(event.name, event.phone);
+    this.curIsland.visitors.push(visitor);
   }  
 
   filterIslands(search: string) {
