@@ -7,7 +7,10 @@
       #search
       (input)="filterIslands(search.value)"
     />
-    <app-island-list [islands]="filteredIslands"></app-island-list>
+    <app-island-list
+      [islands]="filteredIslands"
+      (currentIsland)="onIslandSelect($event)"
+    ></app-island-list>
   </div>
-  <app-island-form [island]="islands[0]"></app-island-form>
+  <app-island-form [island]="currentIsland"></app-island-form>
 </div>
