@@ -2,9 +2,26 @@
   <h2>{{ island.name }}</h2>
   <img src="{{ island.img }}" alt="{{ island.name }}" />
   <h3>Book a trip to {{ island.name }} island</h3>
-  <form>
-    <input placeholder="Type Full Name" />
-    <input placeholder="Type Phone Number" />
-    <button type="submit" class="book">Book for today!</button>
+  <form [formGroup]="bookingForm" (ngSubmit)="bookTrip()">
+    <input
+      placeholder="Type Full Name"
+      id="name"
+      name="name"
+      formControlName="name"
+    />
+    <app-form-error [control]="bookingForm.get('name')"></app-form-error>
+    <input
+      placeholder="Type Phone Number"
+      id="phone"
+      name="phone"
+      formControlName="phone"
+    />
+    @if(bookingForm.get('phone')?.invalid && bookingForm.get('phone')?.touched)
+    { @if(bookingForm.get('phone')?.errors?.['required']) {
+    <p>Phone is required</p>
+    } }
+    <button type="submit" class="book" [disabled]="bookingForm.invalid">
+      Book for today!
+    </button>
   </form>
 </div>
