@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { Island } from '../../data/islands';
 
@@ -11,4 +12,8 @@ import { Island } from '../../data/islands';
 })
 export class IslandFormComponent {
   @Input() island!: Island;
+
+  bookTrip(form: NgForm) {
+    console.log(form.value);
+  }
 }
