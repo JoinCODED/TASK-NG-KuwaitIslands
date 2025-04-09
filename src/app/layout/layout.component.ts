@@ -13,9 +13,15 @@ import { IslandListComponent } from '../island-list/island-list.component';
   styleUrl: './layout.component.css',
 })
 export class LayoutComponent {
-  islands = islands;
-  filteredIslands = islands;
-  currentIsland = this.islands[0];
+  islands: Island[] = [];
+  filteredIslands: Island[] = [];
+  currentIsland!: Island;
+
+  ngOnInit() {
+    this.islands = islands;
+    this.filteredIslands = islands;
+    this.currentIsland = islands[0];
+  }
 
   setCurrentIsland(island: Island) {
     this.currentIsland = island;

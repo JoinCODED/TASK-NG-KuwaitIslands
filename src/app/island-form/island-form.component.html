@@ -2,9 +2,29 @@
   <h2>{{ island.name }}</h2>
   <img src="{{ island.img }}" alt="{{ island.name }}" />
   <h3>Book a trip to {{ island.name }} island</h3>
-  <form (submit)="onSubmit($event)">
-    <input placeholder="Type Full Name" />
-    <input placeholder="Type Phone Number" />
-    <button type="submit" class="book">Book for today!</button>
+  <!-- <form #form="ngForm" (ngSubmit)="bookTrip(form)"> Template Driven form-->
+  <!-- Reactive Form -->
+  <form [formGroup]="form" (ngSubmit)="bookTrip()">
+    <!-- Template Driven form -->
+    <!-- <input placeholder="Type Full Name" type="text" name="name" ngModel required />
+    <input placeholder="Type Phone Number" type="text" name="phone" ngModel required/> -->
+
+    <!-- Reactive Form -->
+    <input
+      placeholder="Type Full Name"
+      type="text"
+      id="name"
+      formControlName="name"
+    />
+    <input
+      placeholder="Type Phone Number"
+      type="text"
+      id="phone"
+      formControlName="phone"
+    />
+
+    <button type="submit" class="book" [disabled]="form.invalid">
+      Book for today!
+    </button>
   </form>
 </div>

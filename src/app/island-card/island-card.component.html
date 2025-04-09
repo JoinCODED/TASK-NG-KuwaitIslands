@@ -1,5 +1,5 @@
 <div class="island-card" (click)="onClick()">
   <h3>{{ island.name }}</h3>
-  <p>visitors: {{ island.visitors }}</p>
+  <p>visitors: {{ island.visitors.length }}</p>
   <img [src]="island.img" [alt]="island.name" />
 </div>
